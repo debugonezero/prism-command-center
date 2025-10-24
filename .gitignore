@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+pip-wheel-metadata/
+.idea/
+
+# Node
+node_modules/
+dist/
+.npm/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# macOS
+.DS_Store
+
+# Genkit
+.genkit/traces/
+.genkit/runtimes/
+.genkit/servers/
+
+# Logs
+*.log
+logs/
+
+# Other
+session.db
