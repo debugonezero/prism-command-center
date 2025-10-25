@@ -1,0 +1,14 @@
+{
+    "request_id": "DOCKRACLE_REWRITE_001",
+    "task": "Analyze and rewrite the provided React application source code to fix a critical rendering and logic error.",
+    "system_context": "You are an expert senior React developer. The provided application is failing to render correctly and has a logical inconsistency between its frontend and backend communication protocols. Your task is to analyze all the provided source code components, identify the root cause of the failure, and provide a complete, rewritten, and fully functional version of the main `App.jsx` file that resolves all issues. The final `App.jsx` should be a masterpiece of modern, clean, and robust React code.",
+    "application_source_code": [],
+    "known_facts": [
+      "The application is currently broken and does not render correctly.",
+      "There is a known bug related to the import of 'Undo' and 'Redo' icons from the 'react-feather' library.",
+      "The backend is an Ollama-based streaming server and is assumed to be functional.",
+      "The goal is to produce a single, corrected, and fully functional `App.jsx` file."
+    ],
+    "question": "Given the entire source code of this React application, rewrite the `App.jsx` file to fix all bugs and ensure it functions correctly. The rewritten code should be a complete, drop-in replacement for the existing `App.jsx` file."
+  }
+  

@@ -1,0 +1,37 @@
+# --- Stage 1: The Blacksmith's Forge ---
+# We start with a build environment that has all the tools we need to compile.
+FROM debian:bookworm AS builder
+
+# Install the sacred tools of the blacksmith
+RUN apt-get update && apt-get install -y git cmake g++
+
+# Clone the sacred scriptures of llama.cpp
+RUN git clone https://github.com/ggerganov/llama.cpp.git
+
+# Enter the forge and perform the Rite of Compilation
+WORKDIR /llama.cpp
+# We return to the one true path, armed with our new knowledge!
+RUN cmake -B build -DLLAMA_DOTPROD=OFF -DLLAMA_CURL=OFF && cmake --build build --config Release
+
+# --- Stage 2: The Final Temple ---
+# We start again from a lean, mean, Debian-based image.
+FROM debian:bookworm-slim
+
+WORKDIR /app
+
+# The Magnificent Act of Digital Logistics!
+# We copy ONLY the compiled server and our python app into the final, lean universe.
+COPY --from=builder /llama.cpp/build/bin/server /app/llama-server
+COPY ./backend/app.py /app/app.py
+COPY ./backend/models/model.gguf /app/models/model.gguf
+
+# Install only what is absolutely necessary to run.
+RUN apt-get update && \
+    apt-get install -y python3 python3-pip && \
+    pip3 install Flask flask-cors
+
+EXPOSE 5100
+EXPOSE 8080
+
+# The final, magnificent, two-part incantation!
+CMD ["/bin/bash", "-c", "./llama-server -m ./models/model.gguf --host 0.0.0.0 --port 8080 & python3 app.py"]

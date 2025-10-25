@@ -1,0 +1,15 @@
+# Python / Flask
+__pycache__/
+*.pyc
+venv/
+.env
+
+# Node / React
+node_modules/
+dist/
+.npm
+.DS_Store
+
+# IDE / OS specific
+.vscode/
+.idea/

@@ -1,0 +1,214 @@
+/* Import the Sacred Font: Fira Code */
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&display=swap');
+
+/* Thematic Duality: The Dracula Palette */
+:root {
+  --background-color: #282a36;
+  --text-color: #f8f8f2;
+  --primary-accent-color: #bd93f9; /* Purple */
+  --secondary-bg-color: #44475a;
+  --border-color: #6272a4;
+  --button-bg-color: #44475a;
+  --button-hover-bg-color: #6272a4;
+  --button-text-color: #f8f8f2;
+  --message-user-bg: #44475a;
+  --message-oracle-bg: #343746;
+  --font-family: 'Fira Code', monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  overflow: hidden;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+/* Main Layout */
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  background-color: var(--background-color);
+  border-right: 1px solid var(--border-color);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.main-content {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  position: relative;
+}
+
+/* Sidebar Components */
+.sidebar .button-group {
+  display: flex;
+  gap: 10px;
+}
+
+.project-list {
+  flex-grow: 1;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.project-item {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: background-color 0.2s;
+}
+
+.project-item:hover {
+  background-color: var(--secondary-bg-color);
+}
+
+.project-item.active {
+  background-color: var(--primary-accent-color);
+  color: #fff;
+}
+
+/* Main Content Components */
+.chat-history {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 20px 20px 120px 20px; /* Padding at bottom for input area */
+}
+
+.input-area {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background-color: var(--background-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.input-area-wrapper {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.prompt-form {
+  width: 100%;
+}
+
+.prompt-input {
+  width: 100%;
+  padding: 15px;
+  font-size: 1em;
+  font-family: var(--font-family);
+  background-color: var(--secondary-bg-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.main-controls {
+  position: absolute;
+  bottom: 85px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  background-color: #282a36c9;
+  padding: 5px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+}
+
+/* Message Bubbles */
+.message {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.message.user {
+  justify-content: flex-end;
+}
+
+.message.oracle {
+  justify-content: flex-start;
+}
+
+.message-content {
+  max-width: 80%;
+  padding: 15px;
+  border-radius: 10px;
+  line-height: 1.6;
+}
+
+.message.user .message-content {
+  background-color: var(--message-user-bg);
+}
+
+.message.oracle .message-content {
+  background-color: var(--message-oracle-bg);
+}
+
+/* Buttons */
+.button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  cursor: pointer;
+  background-color: var(--button-bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--button-text-color);
+  font-family: var(--font-family);
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: var(--button-hover-bg-color);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background-color: var(--button-bg-color);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-bg-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-color);
+}
