@@ -31,3 +31,4 @@ logs/
 
 # Other
 session.db
+*.gguf
